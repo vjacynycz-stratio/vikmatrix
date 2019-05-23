@@ -4,7 +4,7 @@
 
 The lock screen looks like this: 
 
-<img src="./img/screenshot.png" width="200px"/>
+<img src="./img/screenshot.png" width="650px"/>
 
 ## Dependencies
 

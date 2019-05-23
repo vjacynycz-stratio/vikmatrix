@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Use x rand to get the horizontal position of the monitors
+# Use xrandr to get the horizontal position of each monitor
 monitors=$(xrandr --listmonitors | grep -v "Monitors" | sed  's/^.*+\([0-9]*\)+.*/\1/g')
 
 SAVEIFS=$IFS   # Save current IFS
@@ -10,7 +10,7 @@ IFS=$SAVEIFS   # Restore IFS
 
 for (( i=0; i<${#monitors[@]}; i++ ))
 do
-    # Spawn a gnome terminal in each screen with "--full-screen" 
+    # Spawn a gnome terminal in each monitor with "--full-screen"
     gnome-terminal --full-screen --geometry "1x1+${monitors[$i]}+0" -- "vikmatrixterm" &
 done
 

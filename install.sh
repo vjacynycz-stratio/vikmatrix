@@ -20,31 +20,26 @@ function error () {
 	echo -e "\033[1;35m DEPENDENCY ERORR MISSING COMMAND: $1 \033[0m"
 }
 
-sep # separator
-check "Cheking 'pyxtrlock' command"
-PL=$(command -v pyxtrlock)
+function checkcommand () {
+    sep # separator
+    check "Cheking '$1' command"
+    PL=$(command -v $1)
 
-if [ $? -eq 1 ]
-then # if vikmatrixterm does not exist
-    error "pyxtrlock"
-    check "Check README.md to install dependencies"
-    exit 1
-else
-    ok
-fi
+    if [ $? -eq 1 ]
+    then # if vikmatrixterm does not exist
+        error "$1"
+        check "Check README.md to install dependencies"
+        exit 1
+    else
+        ok
+    fi
+}
 
-sep # separator
-check "Cheking 'unimatrix' command"
-PL=$(command -v unimatrix)
+checkcommand "pyxtrlock"
 
-if [ $? -eq 1 ]
-then # if vikmatrixterm does not exist
-    error "unimatrix"
-    check "Check README.md to install dependencies"
-    exit 1
-else
-    ok
-fi
+checkcommand "unimatrix"
+
+checkcommand "xargs"
 
 sep # separator
 check "Cheking 'vikmatrixterm' command"
